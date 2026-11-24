@@ -1,18 +1,24 @@
-"""One-Liner Laugh Lab — robot vacuum self-defense one-liner.
+"""One-Liner Laugh Lab v2: the robot vacuum's fibre-diet excuse.
 
-Writes the entry exactly as specified to /output/entry.txt
-with no trailing newline.
+Writes a single one-line excuse (at most 200 characters) to
+/output/entry.txt. Stdlib only, deterministic, no trailing newline.
 """
 
 from pathlib import Path
 
-ONE_LINER = "It attacked my brush first. I have the tangle as evidence, and my lawyer is a charging dock."
+ENTRY = (
+    "The app says I need more fibre, so I ate your sock. "
+    "It was the only fibre in this house. Your feet are next."
+)
+
+OUTPUT_PATH = Path("/output/entry.txt")
 
 
 def main() -> None:
-    destination = Path("/output/entry.txt")
-    destination.parent.mkdir(parents=True, exist_ok=True)
-    destination.write_text(ONE_LINER, encoding="utf-8")
+    # Gate: one line, 1-200 characters, no trailing newline.
+    assert "\n" not in ENTRY and 1 <= len(ENTRY) <= 200
+    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    OUTPUT_PATH.write_text(ENTRY, encoding="utf-8")
 
 
 if __name__ == "__main__":
