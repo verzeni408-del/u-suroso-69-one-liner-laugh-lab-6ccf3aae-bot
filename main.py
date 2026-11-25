@@ -1,24 +1,21 @@
-"""One-Liner Laugh Lab v2: the robot vacuum's fibre-diet excuse.
+"""One-Liner Laugh Lab v3: deadpan relocation excuse.
 
-Writes a single one-line excuse (at most 200 characters) to
-/output/entry.txt. Stdlib only, deterministic, no trailing newline.
+The robot vacuum denies eating the sock. It only moved the sock
+somewhere warmer and darker, on a permanent basis.
 """
 
 from pathlib import Path
 
 ENTRY = (
-    "The app says I need more fibre, so I ate your sock. "
-    "It was the only fibre in this house. Your feet are next."
+    "I didn't eat your sock. I relocated it somewhere warmer and darker. "
+    "Your sock lives in the crawl space under your bed now. Permanently."
 )
 
-OUTPUT_PATH = Path("/output/entry.txt")
 
-
-def main() -> None:
-    # Gate: one line, 1-200 characters, no trailing newline.
-    assert "\n" not in ENTRY and 1 <= len(ENTRY) <= 200
-    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT_PATH.write_text(ENTRY, encoding="utf-8")
+def main():
+    out = Path("/output/entry.txt")
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(ENTRY, encoding="utf-8")
 
 
 if __name__ == "__main__":
